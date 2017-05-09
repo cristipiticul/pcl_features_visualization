@@ -13,6 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+generate_dynamic_reconfigure_options(cfg/PclFeatures.cfg)
+
 catkin_package(
   INCLUDE_DIRS include
   CATKIN_DEPENDS geometry_msgs roscpp  sensor_msgs std_msgs pcl_ros pcl_conversions dynamic_reconfigure
@@ -29,13 +31,13 @@ include_directories(
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable(pcl_features_visualizer
-	src/pcl_features_visualizer.cpp
+add_executable(pcl_feature_visualizer
+	src/pcl_feature_visualizer.cpp
 )
-add_dependencies(pcl_features_visualizer
+add_dependencies(pcl_feature_visualizer
 	${${PROJECT_NAME}_EXPORTED_TARGETS}
 )
-target_link_libraries(pcl_features_visualizer
+target_link_libraries(pcl_feature_visualizer
   ${catkin_LIBRARIES}
   ${PCL_COMMON_LIBRARIES}
   ${PCL_IO_LIBRARIES}
